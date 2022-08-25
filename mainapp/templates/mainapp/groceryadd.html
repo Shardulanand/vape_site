@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Add Grocery{% endblock title %}
+{% block body %}
+<center>
+<form action="{% url 'mainapp:groceryurls' %}" method='post' enctype='multipart/form-data'>
+    {% csrf_token %}
+    <h1 style="font-family:Helvetica; text-align:center">Add Grocery</h1>
+    <table>
+        <tr>
+            <th><label for='name'>Product Name</label></th>
+            <td><input type='text' id="name" name='name' placeholder='Enter Your Product Name'></td>
+        </tr>
+        <tr>
+            <th><label for='price'>Product price</label></th>
+            <td><input type='text' id="price" name='price' placeholder='Enter Your Product price'></td>
+        </tr>
+        <tr>
+            <th><label for="description">Product description</label></th>
+            <td><textarea name="description" id="description" cols="30" row="5" placeholder="description"></textarea></td>
+        </tr>
+        <tr>
+            <th><label for="image">Product Image</label></th>
+            <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+            <td><input type='submit' value="Add to List"></td>
+        </tr>
+    </table>
+</form>
+
+
+
+
+
+
+{% endblock body %}

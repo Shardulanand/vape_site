@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}List{% endblock title %}
+{% block body %}
+<center>
+<h1 style='font-family:Garamond;'>OUR PRODUCT</h1>
+<h1 style='font-family:Garamond;'>____________</h1>
+    <table align="center" width="70%" border="1">
+        <tr>
+            <th style="font-family:Garamond;">Sr.No</th>
+            <th style="font-family:Garamond;">Product Image</th>
+            <th style="font-family:Garamond;">Product Name</th>
+            <th style="font-family:Garamond;">Product Price</th>
+            <th style="font-family:Garamond;">Product Description</th>
+            <th style="font-family:Garamond;" colspan="4">Action</th>
+        </tr>
+        {% for items in productInst %}
+        <tr align="center">
+        <td style="font-family:Garamond;">{{forloop.counter}}</td>
+        <td><img src="{{items.image.url}}" alt="" width="200px" height="200px"></td>
+        <td style="font-family:Garamond;">{{items.name}}</td>
+        <td style="font-family:Garamond;">{{items.price}}₹</td>
+        <td style="font-family:Garamond;">{{items.description}}</td>
+        <td><a style="text-decoration:none;" href="">Add To Cart</a></td>
+        <td><a style="text-decoration:none;"href="">Buy Now</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock body %}

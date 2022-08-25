@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Items{% endblock title %}
+{% block body %}
+{% comment %} <link rel="stylesheet" href="{% static 'accapp/css/style.css' %}"> {% endcomment %}
+<center>
+    <h1 style='font-family:Garamond;'>Add Product</h1>
+    <form action="{% url 'accapp:catalogaddurl' %}" method='post' enctype='multipart/form-data'>
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th><label for="name">Product Name</label></th>
+                <td><input type='text' name='name' id='name' placeholder="Enter Product Name"></td>
+            </tr>
+            <tr>
+                <th><label for="price">Price</label></th>
+                <td><input type='number' name='price' id='price' placeholder="Enter Product price "></td>
+            </tr>
+            <tr>
+                <th><label for="description">Product description</label></th>
+                <td><textarea name="description" id="description" cols="30" row="5" placeholder="description"></textarea></td>
+            </tr>
+            <tr>
+                <th><label for="image">Product Image</label></th>
+                <td><input type="file" name="image" id="image"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Add to List"></td>
+            </tr>
+        </table>
+    </form>
+{% endblock body %}

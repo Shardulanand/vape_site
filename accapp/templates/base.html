@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{% endblock title %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% comment %} <link rel="stylesheet" href="{% static 'accapp/css/style.css' %}"> {% endcomment %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/0ca0033246.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        {% if request.user.id %}
+        <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href="{% url 'accapp:homeurl' %}"><i class="fa-solid fa-house-user"></i> Home&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href="{% url 'accapp:mylogouturl' %}"><i class="fa-solid fa-lock"></i> Logout&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp</a>
+        <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href="{% url 'accapp:cataloglisturl' %}"><i class="fa-solid fa-list"></i> Our Product&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp</a>
+        <h4 style="font-family:Calibri; text-align:left"> WELCOME  {{ request.user.username }}</h4>
+        {% else %}
+        <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href="{% url 'accapp:myloginurl' %}"> <i class="fa-solid fa-right-to-bracket"></i> Login &nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp</a>
+        <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href="{% url 'accapp:registerurl' %}" ><i class="fa-solid fa-user-plus"></i> Create Account&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>{% comment %} <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href="{% url 'accapp:productlisturl' %}">catalog add</a> {% endcomment %}
+        {% endif %}
+        {% if request.user.is_superuser %}
+        <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href='admin/'><i class="fa-solid fa-gear"></i> Admin&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <a style="font-family:Garamond;font-size:27px;text-decoration:none;color:Black;" href="{% url 'accapp:catalogaddurl' %}"><i class="fa-solid fa-plus"></i> Add Product&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        
+        {% endif %} 
+        <hr>
+        {% if messages %}
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+        {% endif %}
+        <marquee style="font-family:Garamond;font-size:33px" width="67%" direction="left" height="px">
+            Sale will start Midnight---- Everything will be 400/₹ off ----
+            </marquee>
+
+    
+
+        {% block body %}{% endblock body %}
+        
+        
+        <script src="" async defer></script>
+    </body>
+</html>

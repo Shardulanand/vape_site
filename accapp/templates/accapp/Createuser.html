@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create Account{% endblock title %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'accapp/css/style.css' %}">
+<p>The username must be unique<br>
+    The password must have speacial character .!@#$%</p>
+<center>
+<h1 style='font-family:Helvetica;'>Create Account <i class="fa-solid fa-user-plus"></i></h1>
+<form action="{% url 'accapp:registerurl' %}" method='post'>
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th><label for='username'><i class="fa-regular fa-user"></i>Username:</label></th>
+            <td><input type="Text" name='username' id='username' placeholder="Create your username"></td>
+        </tr>
+        <tr>
+            <th><label for='password'><i class="fa fa-key"></i> Password:</label></th>
+            <td><input type="password" name='password1' id='password' placeholder="Create your password"></td>
+        </tr>
+        <tr>
+            <th><label for='password2'><i class="fa fa-key"></i> Password:</label></th>
+            <td><input type="password" name='password2' id='password2' placeholder="Confirm your Password"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Create Account"></td>
+        </tr>
+{% endblock body %}
